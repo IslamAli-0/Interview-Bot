@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Telegram Interview Bot Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Telegram Interview Master Bot</p>
+          <h1>Daily Backend Interviews, Fully Automated</h1>
+          <p class="subtitle">Monitor subscribers, leaderboards, and difficulty cadence from one clean control pane.</p>
+        </div>
+        <div class="status-stack">
+          <div class="status-card">
+            <p class="label">Difficulty</p>
+            <p class="value" id="difficulty">--</p>
+            <p class="frozen" id="frozen">--</p>
+          </div>
+          <div class="status-card accent">
+            <p class="label">Questions Asked</p>
+            <p class="value" id="questions-asked">--</p>
+            <p class="frozen">Total generated</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Leaderboard</h2>
+          <table class="leaderboard">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Developer</th>
+                <th>Score</th>
+                <th>Answered</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+              <tr>
+                <td colspan="4" class="loading">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+        <div class="stack">
+          <article class="card admin">
+            <h2>Admin Controls</h2>
+            <div class="admin-login">
+              <label class="field-label" for="admin-password">Password</label>
+              <div class="admin-row">
+                <input id="admin-password" type="password" placeholder="Enter admin password" />
+                <button id="admin-unlock" type="button">Unlock</button>
+              </div>
+              <p class="admin-status" id="admin-status">Locked</p>
+            </div>
+            <div class="admin-actions hidden" id="admin-actions">
+              <div class="admin-section">
+                <label class="field-label" for="difficulty-input">Difficulty override</label>
+                <div class="admin-row">
+                  <input id="difficulty-input" type="number" min="1" max="10" placeholder="1-10" />
+                  <button id="set-level" type="button">Set</button>
+                </div>
+                <button id="clear-level" type="button" class="ghost">Clear override</button>
+              </div>
+              <div class="admin-divider"></div>
+              <button id="test-broadcast" type="button" class="ghost">Send test broadcast</button>
+              <div class="admin-divider"></div>
+              <button id="clear-leaderboard" type="button" class="danger">Clear leaderboard</button>
+            </div>
+          </article>
+          <article class="card tips">
+            <h2>Ops Notes</h2>
+            <ul>
+              <li>Use admin controls to freeze difficulty during hiring sprints.</li>
+              <li>Keep Telegram replies crisp: the bot responds in Markdown.</li>
+              <li>Daily broadcasts fire at midnight Egypt Standard Time.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

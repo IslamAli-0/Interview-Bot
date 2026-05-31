@@ -1,0 +1,13 @@
+bin/
+obj/
+**/bin/
+**/obj/
+**/.git/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/*.suo
+**/*.cache
+appsettings*.json
+InterviewBot.db

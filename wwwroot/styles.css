@@ -1,0 +1,258 @@
+:root {
+  color-scheme: light;
+  --bg: #f6efe6;
+  --bg-accent: #f0f7f5;
+  --ink: #1e1b16;
+  --muted: #5f5a52;
+  --accent: #e07a5f;
+  --accent-dark: #c45d43;
+  --highlight: #2a9d8f;
+  --card: #fffaf4;
+  --shadow: rgba(29, 24, 18, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top left, var(--bg-accent), var(--bg) 55%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: -20% 0 0 -10%;
+  background: radial-gradient(circle at 20% 20%, rgba(224, 122, 95, 0.2), transparent 55%),
+    radial-gradient(circle at 70% 10%, rgba(42, 157, 143, 0.18), transparent 60%);
+  filter: blur(10px);
+  z-index: 0;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(2%, -2%, 0);
+  }
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  padding: 48px 6vw 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--highlight);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: clamp(32px, 4vw, 44px);
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.status-card {
+  background: linear-gradient(140deg, var(--card), #fff);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 20px 40px var(--shadow);
+  min-width: 200px;
+}
+
+.status-stack {
+  display: grid;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.status-card.accent {
+  border: 1px solid rgba(224, 122, 95, 0.3);
+}
+
+.status-card .label {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.status-card .value {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+  color: var(--accent-dark);
+}
+
+.status-card .frozen {
+  margin: 0;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.stack {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 18px 36px var(--shadow);
+}
+
+.card h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard th,
+.leaderboard td {
+  text-align: left;
+  padding: 12px 8px;
+  font-size: 14px;
+}
+
+.leaderboard thead {
+  border-bottom: 2px solid rgba(30, 27, 22, 0.08);
+}
+
+.leaderboard tbody tr {
+  border-bottom: 1px solid rgba(30, 27, 22, 0.06);
+}
+
+.leaderboard th:last-child,
+.leaderboard td:last-child {
+  text-align: right;
+}
+
+.loading {
+  text-align: center;
+  color: var(--muted);
+}
+
+.tips ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 12px;
+}
+
+.admin {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(30, 27, 22, 0.15);
+  font-family: inherit;
+}
+
+.admin-row button,
+.admin-actions button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--highlight);
+  color: white;
+}
+
+.admin-actions .ghost {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid rgba(30, 27, 22, 0.2);
+  color: var(--ink);
+}
+
+.admin-actions .danger {
+  background: var(--accent);
+}
+
+.admin-status {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.admin-actions.hidden {
+  display: none;
+}
+
+.admin-divider {
+  height: 1px;
+  background: rgba(30, 27, 22, 0.08);
+  margin: 8px 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-card {
+    width: 100%;
+  }
+}
